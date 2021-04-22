@@ -2,44 +2,73 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>My Django Project</title>
+    <title>Area-wise cab demand predictor</title>
+    <link rel = "icon"
+          href = "https://cdn4.iconfinder.com/data/icons/aiga-symbol-signs/388/aiga_taxi-512.png"
+          type = "image/x-icon">
+    <style>
+        body{
+          background-image: url("https://cherrytaxiservice.com/wp-content/uploads/2017/07/Taxi.jpg");
+          background-repeat: no-repeat;
+          background-attachment: fixed;
+          background-size: cover;
+          font-family: "open-sans", sans-serif;
+          margin: 0;
+          padding: 0;
+          color: #fff;
+        }
+        input[type=submit]{
+          transition-duration: 0.4s;
+          border-radius: 10px;
+          font-size: 18px;
+          width: 125px;
+          height: 45px;
+        }
+        input[type=submit]:hover{
+          background-color: #4CAF50;
+          color: white;
+        }
+    </style>
 </head>
-<body>
-    <h1>Uber Rides Predictor</h1>
-    <hr/>
+<body align="center">
+<h1><u>AREA-WISE CAB DEMAND PREDICTOR</u></h1>
+    <hr/><br/>
     <form action="{% url 'test' %}" method="post">
         {% csrf_token %}
-        Enter Price Per Week
-        <input type="'number" name="ppw" placeholder="Enter Price Per Week"/><br/><br/>
-        Enter Population
-        <input type="'number" name="pn" placeholder="Enter Population"/><br/><br/>
-        Enter Monthly Income
-        <input type="'number" name="mi" placeholder="Enter Monthly Income"/><br/><br/>
-        Enter Average Parking Per Week
-        <input type="'number" name="appw" placeholder="Enter Average Parking Per Week"/><br/><br/>
-        <input type="submit" value="Predict"/><br/><br/>
-<!--        <table border="1">-->
-<!--            <tr>-->
-<!--                <th>Price Per Week</th>-->
-<!--                <th>Population</th>-->
-<!--                <th>Monthly Income</th>-->
-<!--                <th>Average Parking Per Week</th>-->
-<!--                <th>No. of rides</th>-->
-<!--            </tr>-->
-<!--            {% for r in res %}-->
-<!--            <tr>-->
-<!--                <td>{{r.ppw}}</td>-->
-<!--                <td>{{r.pm}}</td>-->
-<!--                <td>{{r.mi}}</td>-->
-<!--                <td>{{r.appm}}</td>-->
-<!--                <td>{{r.result}}</td>-->
-<!--            </tr>-->
-<!--            {% endfor %}-->
-<!--        </table>-->
-        {% if res %}
-            <h2>No of rides: {{res}}</h2>
-        {% endif %}
+        <b>Enter Price Per Week:</b>
+        <input type="number" name="ppw" placeholder="Enter Price Per Week" required/><br/><br/>
+        <b>Enter Population:</b>
+        <input type="number" name="pn" placeholder="Enter Population" required/><br/><br/>
+        <b>Enter Monthly Income:</b>
+        <input type="number" name="mi" placeholder="Enter Monthly Income" required/><br/><br/>
+        <b>Enter Average Parking Per Month:</b>
+        <input type="number" name="appm" placeholder="Enter Average Parking Per Month" required/><br/><br/>
+        <input type="submit" value="PREDICT"/>
+        <br/><br/>
+        <!--{% if res %}-->
+            <!--<h2>Number of rides: {{res}}</h2>-->
+        <!--{% endif %}-->
+        <hr/><br>
+        <table border="1" align="center" style="background-color:#4CAF50;">
+            <tr>
+                <th><b>Price Per Week</b></th>
+                <th><b>Population</b></th>
+                <th><b>Monthly Income</b></th>
+                <th><b>Average Parking Per Month</b></th>
+                <th><b>No. of rides</b></th>
+            </tr>
+            {% for r in res %}
+            <tr>
+                <td>{{r.ppw}}</td>
+                <td>{{r.pn}}</td>
+                <td>{{r.mi}}</td>
+                <td>{{r.appm}}</td>
+                <td>{{r.result}}</td>
+            </tr>
+            {% endfor %}
+        </table>
     </form>
-
+<br><br>
+<h4 align="center"><mark> Copyright &#169; 2021 Riyansh Pal - All Rights Reserved </mark></h4>
 </body>
 </html>
